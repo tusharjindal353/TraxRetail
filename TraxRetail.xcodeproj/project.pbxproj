@@ -6,6 +6,11 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		348F419C2DA78F2500831999 /* TraxCamera in Frameworks */ = {isa = PBXBuildFile; productRef = 348F419B2DA78F2500831999 /* TraxCamera */; };
+		348F419F2DA78F6F00831999 /* TraxCamera in Frameworks */ = {isa = PBXBuildFile; productRef = 348F419E2DA78F6F00831999 /* TraxCamera */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		34D59BB12D9C3C7A005099AA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -29,9 +34,22 @@
 		34D59BBA2D9C3C7A005099AA /* TraxRetailUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TraxRetailUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		34D59BD02D9C4160005099AA /* Exceptions for "TraxRetail" folder in "TraxRetail" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = 34D59B9A2D9C3C78005099AA /* TraxRetail */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		34D59B9D2D9C3C78005099AA /* TraxRetail */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				34D59BD02D9C4160005099AA /* Exceptions for "TraxRetail" folder in "TraxRetail" target */,
+			);
 			path = TraxRetail;
 			sourceTree = "<group>";
 		};
@@ -52,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				348F419F2DA78F6F00831999 /* TraxCamera in Frameworks */,
+				348F419C2DA78F2500831999 /* TraxCamera in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +132,8 @@
 			);
 			name = TraxRetail;
 			packageProductDependencies = (
+				348F419B2DA78F2500831999 /* TraxCamera */,
+				348F419E2DA78F6F00831999 /* TraxCamera */,
 			);
 			productName = TraxRetail;
 			productReference = 34D59B9B2D9C3C78005099AA /* TraxRetail.app */;
@@ -195,6 +217,9 @@
 			);
 			mainGroup = 34D59B922D9C3C78005099AA;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				34045DFC2DAECE6F006B9087 /* XCLocalSwiftPackageReference "TraxCamera" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 34D59B9C2D9C3C78005099AA /* Products */;
 			projectDirPath = "";
@@ -399,6 +424,9 @@
 				DEVELOPMENT_TEAM = 7SX4M5TGTU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TraxRetail/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Capture product photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -428,6 +456,9 @@
 				DEVELOPMENT_TEAM = 7SX4M5TGTU;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = TraxRetail/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Capture product photos";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -558,6 +589,24 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		34045DFC2DAECE6F006B9087 /* XCLocalSwiftPackageReference "TraxCamera" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = TraxCamera;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		348F419B2DA78F2500831999 /* TraxCamera */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TraxCamera;
+		};
+		348F419E2DA78F6F00831999 /* TraxCamera */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = TraxCamera;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 34D59B932D9C3C78005099AA /* Project object */;
 }
