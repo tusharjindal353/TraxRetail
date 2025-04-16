@@ -17,8 +17,7 @@ struct CameraView: View {
             TraxCameraPreview(session: cameraViewModel.session)
             VStack {
                 Spacer()
-                
-                HStack {
+                VStack {
                     Button(action: {
                         currentLensMode = currentLensMode == .normal ? .ultraWide : .normal
                         cameraViewModel.switchLens(lensMode: currentLensMode)
@@ -34,43 +33,47 @@ struct CameraView: View {
                                 )
                             )
                     }
-                    Button(action: {
-                        cameraViewModel.isFlashOn.toggle()
-                    }) {
-                        Image(
-                            systemName: cameraViewModel.isFlashOn
-                            ? "bolt.circle.fill"
-                            : "bolt.slash.circle"
-                        )
-                            .imageScale(.large)
-                            .foregroundStyle(.white)
+                    HStack {
                         
-                    }
-                    Button(action: {
-                        cameraViewModel.capturePhoto()
-                    }) {
-                        Circle()
-                            .fill(Color.white)
-                            .frame(width: 70, height: 70)
-                            .overlay(
-                                Circle()
-                                    .stroke(
-                                        Color.gray,
-                                        lineWidth: 2
-                                    )
-                                    .padding(.all, 4)
+                        Button(action: {
+                            cameraViewModel.isFlashOn.toggle()
+                        }) {
+                            Image(
+                                systemName: cameraViewModel.isFlashOn
+                                ? "bolt.circle.fill"
+                                : "bolt.slash.circle"
                             )
-                    }
-                    Button(action: {
-                        self.showAllPhotos.toggle()
-                    }) {
-                        Image(systemName: "photo.circle.fill")
+                            .font(.system(size: 20))
                             .imageScale(.large)
                             .foregroundStyle(.white)
+                            
+                        }
+                        Button(action: {
+                            cameraViewModel.capturePhoto()
+                        }) {
+                            Circle()
+                                .fill(Color.white)
+                                .frame(width: 70, height: 70)
+                                .overlay(
+                                    Circle()
+                                        .stroke(
+                                            Color.gray,
+                                            lineWidth: 2
+                                        )
+                                        .padding(.all, 4)
+                                )
+                        }
+                        Button(action: {
+                            self.showAllPhotos.toggle()
+                        }) {
+                            Image(systemName: "photo.circle.fill")
+                                .font(.system(size: 40))
+                                .foregroundStyle(.white)
+                        }
+                        .frame(width: 30, height: 30)
                     }
-                    .frame(width: 30, height: 30)
+                    .padding(.bottom, 30)
                 }
-                .padding(.bottom, 30)
             }
             .navigationDestination(isPresented: $cameraViewModel.isImageCaptured, destination: {
                 if let image = cameraViewModel.capturedImage {

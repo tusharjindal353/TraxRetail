@@ -13,6 +13,16 @@ class MockTraxStorage: TraxStorage {
     var date = Date()
     var savedProduct: Product? = nil
     
+    var mockProduct: Product {
+        let product = Product(context: context)
+        product.productid = "123"
+        product.category = "fruit"
+        product.image = "imageUrl"
+        product.productname = "Apple"
+        product.date = date
+        return product
+    }
+    
     var context: NSManagedObjectContext!
     
     init() {

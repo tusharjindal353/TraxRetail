@@ -1,17 +1,17 @@
 //
-//  AddProductViewModelTests.swift
+//  ProductDetailViewModelTests.swift
 //  TraxRetail
 //
-//  Created by Tushar Gupta on 15/04/2025.
+//  Created by Tushar Gupta on 16/04/2025.
 //
 
 import XCTest
 @testable import TraxRetail
 import Combine
 
-final class AddProductViewModelTests: XCTestCase {
+final class ProductDetailViewModelTests: XCTestCase {
     
-    var viewModel: AddProductViewModel!
+    var viewModel: ProductDetailsViewModel!
     var traxStorage: MockTraxStorage!
     var imageRepository: MockImageRepository!
     var imageRecognisation: MockTraxImageRecognisation!
@@ -22,28 +22,10 @@ final class AddProductViewModelTests: XCTestCase {
         imageRepository = MockImageRepository()
         imageRecognisation = MockTraxImageRecognisation()
         cancellables = []
-        viewModel = AddProductViewModel(
-            traxStorage: traxStorage,
-            imageRepository: imageRepository,
+        viewModel = ProductDetailsViewModel(
             imageRecognisation: imageRecognisation,
-            image: UIImage()
-        )
-    }
-    
-    func testSaveProduct() async {
-        let expectation = XCTestExpectation(description: "Products should be saved")
-                
-        viewModel.$isProductSaved
-            .dropFirst() // Skip the initial value
-            .sink { newValue in
-                XCTAssertEqual(newValue, true)
-                expectation.fulfill()
-            }
-            .store(in: &cancellables)
-
-        await viewModel.saveProduct(productName: "Apple", productCategory: "fruit")
-
-        await fulfillment(of: [expectation])
+            imageRepository: imageRepository,
+            product: traxStorage.mockProduct)
     }
     
     func testRecogniseImage() async {
@@ -59,6 +41,22 @@ final class AddProductViewModelTests: XCTestCase {
             .store(in: &cancellables)
 
         await viewModel.recogniseImage(image: UIImage())
+
+        await fulfillment(of: [expectation])
+    }
+    
+    func testLoadImage() async {
+        let expectation = XCTestExpectation(description: "Image Should be loaded")
+                
+        viewModel.$image
+            .dropFirst() // Skip the initial value
+            .sink { newValue in
+                XCTAssertEqual(newValue, self.imageRepository.imageToReturn)
+                expectation.fulfill()
+            }
+            .store(in: &cancellables)
+
+        await viewModel.loadImage(productId: "")
 
         await fulfillment(of: [expectation])
     }
